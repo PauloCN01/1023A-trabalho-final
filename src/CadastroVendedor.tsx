@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import './Cadastro.css'
 
 function PaginaCadastro() {
 
     function TrataCadastro() {
-
+        
     }
     return (
         <>
