@@ -1,11 +1,32 @@
 import React, { useEffect, useState } from "react"
 import './Cadastro.css'
 
-function PaginaCadastro() {
+interface VendedorState {
+    id: number,
+    nome: string,
+    cpf: string,
+    email: string,
+    senha: string,
+    genero: string,
+}
 
-    function TrataCadastro() {
-        
-    }
+function PaginaCadastro() {
+    const [nome, setNome] = useState("")
+    const [cpf, setCPF] = useState("")
+    const [email, setEmail] = useState("")
+    const [senha, setSenha] = useState("")
+    const [genero, setGenero] = useState("")
+    const [vendedor, setProdutos] = useState<VendedorState[]>([])
+    async function TrataCadastro(event: React.FormEvent<HTMLFormElement>) {
+        event.preventDefault();
+        //Criar um novo produto
+        const novoVendedor: VendedorState = {
+            nome: nome,
+            cpf: cpf,
+            email: email,
+            senha: senha,
+            genero: genero
+        }
     return (
         <>
             <header>
