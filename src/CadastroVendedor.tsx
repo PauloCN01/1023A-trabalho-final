@@ -25,7 +25,7 @@ function PaginaCadastro() {
                 const resultado = await fetch("http://localhost:8000/Vendedor")
                 if (resultado.status === 200) {
                     const dados = await resultado.json()
-                    setProdutos(dados)
+                    setVendedor(dados)
                 }
                 if (resultado.status === 400) {
                     const erro = await resultado.json()
@@ -46,7 +46,8 @@ function PaginaCadastro() {
             cpf: cpf,
             email: email,
             senha: senha,
-            genero: genero
+            genero: genero,
+            id: 0
         }
         try {
             const resposta = await fetch("http://localhost:8000/Vendedor", {
@@ -91,6 +92,12 @@ function PaginaCadastro() {
 
             </header>
             <main>
+                {mensagem &&
+                    <div className="mensagem">
+                        <p>{mensagem}</p>
+                    </div>
+                }
+                
                 <div className="container-cadastro">
                     <form onSubmit={TrataCadastro}>
                         <input type="text" name="nome" id="nome" onChange={trataNome} placeholder="Nome" />
