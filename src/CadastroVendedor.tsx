@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+
 import './Cadastro.css'
 
 interface VendedorState {
@@ -17,9 +18,25 @@ function PaginaCadastro() {
     const [senha, setSenha] = useState("")
     const [genero, setGenero] = useState("")
     const [mensagem, setMensagem] = useState("")
-    const [vendedor, setProdutos] = useState<VendedorState[]>([])
+    const [vendedor, setVendedor] = useState<VendedorState[]>([])
     useEffect(() => {
-
+        const buscaDados = async () => {
+            try{
+                const resultado = await fetch("http://localhost:8000/Vendedor")
+                if (resultado.status === 200) {
+                    const dados = await resultado.json()
+                    setProdutos(dados)
+                }
+                if (resultado.status === 400) {
+                    const erro = await resultado.json()
+                    setMensagem(erro.mensagem)
+                }
+            }
+            catch(erro){
+                setMensagem("Fetch não está funcionando")
+            }
+        }
+        buscaDados()
     }, [])
     async function TrataCadastro(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
@@ -30,6 +47,27 @@ function PaginaCadastro() {
             email: email,
             senha: senha,
             genero: genero
+        }
+        try {
+            const resposta = await fetch("http://localhost:8000/Vendedor", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(novoVendedor)
+            })
+            if (resposta.status === 200) {
+                const dados = await resposta.json()
+                setVendedor([...vendedor, dados])
+            }
+            if (resposta.status === 400) {
+                const erro = await resposta.json()
+                setMensagem(erro.mensagem)
+            }
+            
+        }
+        catch (erro) {
+            setMensagem("Fetch não functiona")
         }
     }
     function trataNome(event: React.ChangeEvent<HTMLInputElement>) {
