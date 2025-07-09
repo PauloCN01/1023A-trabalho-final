@@ -22,7 +22,7 @@ function PaginaCadastro() {
     useEffect(() => {
         const buscaDados = async () => {
             try{
-                const resultado = await fetch("http://localhost:8000/Vendedor")
+                const resultado = await fetch("http://localhost:8000/cadastrovendedor")
                 if (resultado.status === 200) {
                     const dados = await resultado.json()
                     setVendedor(dados)
@@ -50,7 +50,7 @@ function PaginaCadastro() {
             id: 0
         }
         try {
-            const resposta = await fetch("http://localhost:8000/Vendedor", {
+            const resposta = await fetch("http://localhost:8000/cadastrovendedor", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -97,7 +97,7 @@ function PaginaCadastro() {
                         <p>{mensagem}</p>
                     </div>
                 }
-                
+
                 <div className="container-cadastro">
                     <form onSubmit={TrataCadastro}>
                         <input type="text" name="nome" id="nome" onChange={trataNome} placeholder="Nome" />
