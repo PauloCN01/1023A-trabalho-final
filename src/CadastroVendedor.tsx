@@ -47,7 +47,6 @@ function PaginaCadastro() {
             email: email,
             senha: senha,
             genero: genero,
-            id: 0
         }
         try {
             const resposta = await fetch("http://localhost:8000/cadastrovendedor", {

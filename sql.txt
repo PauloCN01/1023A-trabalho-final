@@ -44,7 +44,7 @@ nome varchar(255) NOT NULL,
 cpf varchar(14) not null unique,
 email varchar(255),
 endereco TEXT,
-segenero ENUM ('M', 'F', 'Helicoptero de Combate Russo Alemão criado a 2000 anos atrás') default'Helicoptero de Combate Russo Alemão criado a 2000 anos atrás'
+segenero ENUM ('M', 'F', 'Outro') default'Outro'
 );
 
 -- Tabela: vendedores
