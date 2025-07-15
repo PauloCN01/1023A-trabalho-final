@@ -1,28 +1,91 @@
-body{
-    margin: 0px;
-}
-header{
-    background-color: #00ffff;
-    padding: 0px 10vw;
-    min-height: 10vh;
-}
-main{
-    margin-top: 15px;
-    margin-bottom: 15px;
-    padding: 0px 10vw;
+main {
     display: flex;
-    position: relative;
     justify-content: center;
+    padding: 40px 20px;
+    font-family: Arial, sans-serif;
 }
-.card{
+
+/* Cartão do perfil */
+.card {
     display: flex;
-    border: 2px solid black ;
-    min-width: 30vw;
-    max-width: 40vw;
+    flex-direction: row;
+    align-items: flex-start;
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+    gap: 30px;
 }
-.avatar{
-    width: 75px;
-    height: 75px;
-    border: 1px solid black;
+
+/* Imagem do avatar */
+.avatar {
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 2px solid black;
+    box-sizing: border-box;
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%; 
+    display: block;
+}
+
+
+/* Informações do vendedor */
+.dados {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Título do nome */
+.dados h1 {
+    margin: 0;
+    font-size: 28px;
+    color: #333;
+}
+
+/* Informações */
+.dados p {
+    margin: 0;
+    font-size: 16px;
+    color: #555;
+}
+
+/* Botão de deletar */
+.dados button {
+    margin-top: 20px;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+
+.dados button:hover {
+    background-color: #0056b3;
+}
+
+/* Mensagem de erro ou sucesso */
+.mensagem {
+    position: absolute;
+    top: 20px;
+    text-align: center;
+    background-color: #ffe5e5;
+    color: #a33;
+    padding: 10px 20px;
+    border: 1px solid #f5c2c2;
+    border-radius: 5px;
 }
